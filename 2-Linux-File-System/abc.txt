@@ -1,0 +1,37 @@
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <sys/sysmacros.h>
+#include <time.h>
+int main(int argc, char *argv[])
+{
+    struct stat file_stat;
+    if(argc != 2)
+    {
+        printf("Usage: ./filestat <file_path>\n");
+        return -1;
+    }
+    printf("File path: %s\n", argv[1]);
+    stat(argv[1], &file_stat);
+    if(S_ISREG(file_stat.st_mode))
+    {
+        printf("File type: Regular file\n");
+    }
+    else if(S_ISDIR(file_stat.st_mode))
+    {
+        printf("File type: Directory\n");
+    }
+    else if(S_ISLNK(file_stat.st_mode))
+    {
+        printf("File type: Symbolic Link\n");
+    }
+    printf("Size: %d bytes\n", (int)file_stat.st_size);
+    printf("Last Modified: %s\n", ctime(&file_stat.st_mtime));
+    return 0;
+}
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
