@@ -1,0 +1,18 @@
+1. Tiến trình zombie:
+- Nguyên nhân xuất hiện:
++ Do tiến trình con kết thúc nhưng tiến trình cha không gọi wait() để thu thập trạng thái thoát của tiến trình con
++ Thông tin của tiến trình con vẫn còn được lưu trữ trong bảng tiến trình để tiến trình cha có thể đọc trạng thái thoát sau này
+- Ý nghĩa trong hệ thống Linux:
++ Đảm bảo tiến trình cha có thể biết được trạng thái kết thúc của tiến trình con
++ Là cơ chế của hệ điều hành, không phải lỗi
++ Tự động giải phóng khi tiến trình cha gọi wait() hoặc cha kết thúc
+
+2. Tiến trình orphan:
+- Nguyên nhân xuất hiện:
++ Tiến trình cha kết thúc trước tiến trình con
++ hệ điều hành cần đảm bảo mọi tiến trình đều có cha
+- Ý nghĩa trong hệ thống Linux:
++ Tiến trình init (PID 1) trở thành cha mới của tiến trình orphan
++ Đảm bảo không có tiến trình nào không có cha trong hệ thống
++ Ngăn người tình trạng tiến trình không được quản lý
++ Tiến trình init sẽ tự động gọi wait() cho các tiến trình orphan
