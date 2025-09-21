@@ -1,0 +1,13 @@
+1. Không gian địa chỉ bị thay thế hoàn toàn
++ Bộ nhớ của tiến trình con (code, data, stack, heap) bị xóa sạch.
++ Hệ điều hành nạp chương trình mới vào không gian địa chỉ của tiến trình con.
++ Các vùng nhớ cũ như biến toàn cục, hàm, stack cũ… không còn tồn tại.
+
+2. Mã lệnh bị thay thế
++ Mã thực thi của tiến trình con được thay bằng mã của chương trình mới.
++ Tiến trình con bắt đầu thực thi từ hàm main() của chương trình mới.
++ Không có dòng lệnh nào sau exec() trong chương trình gốc được thực thi nữa.
+
+3. PID không thay đổi
++ Mặc dù nội dung tiến trình thay đổi hoàn toàn, PID của tiến trình vẫn giữ nguyên.
++ Điều này giúp hệ thống quản lý tiến trình dễ dàng hơn.
